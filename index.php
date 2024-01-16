@@ -1,41 +1,12 @@
 <?php
 include_once("connection.php");
+$sql="Select * from empdata Where 1";
+$result=$conn->query();
+$row=array();
+print_r($row);
 ?>
-<?php
-if(isset($_POST['save']) && !empty($_POST['save'])){
-
-    $name=$_POST['name'];
-    $gender=$_POST['gender'];
-    $email=$_POST['email'];
-    $department=$_POST['department'];
-    $address=$_POST['address'];
-
-    $sql="Insert Into empdata(`id`,`emp_name`,`emp_gender`,`emp_email`,`emp_department`,`emp_address`) 
-    
-    
-    Values(NULL,'$name','$gender','$email','$department','$address');";
-    $data= $conn->query($sql);
-    if($data){
-        //echo "Data save into database";
-    }else{
-        echo "Failed to save data";
-    }
-}
 
 
-?>
-<?php
-
-if(isset($_POST['searchdata'])){
-    $search_id=$_POST['search'];
-    $sql="Select * From empdata Where id= '$search_id'";
-    $data=$conn->query($sql);
-    $result=$data->fetch_assoc();
-    //$name=$result['emp_name'];
-    //echo $name;
-}
-
-?>
 
 
 <!DOCTYPE html>
@@ -48,43 +19,9 @@ if(isset($_POST['searchdata'])){
     
 </head>
 <body>
-<?php
-if(isset($_POST['delete'])){
-    $id=$_POST['search'];
-    //echo $id;
-    $sql="Delete From empdata Where id='$id'";
-    $data= $conn->query($sql);
-    if($data){
-        echo "record deleted";
-    }else{
-        echo "failed to delete";
-    }
-}
 
-?>
 
-<?php
 
-if(isset($_POST['update'])){
-
-    $id= $_POST['search'];
-    $name= $_POST['name'];
-    $gender= $_POST['gender'];
-    $email= $_POST['email'];
-    $department= $_POST['department'];
-    $address= $_POST['address'];
-
-    $sql="Update empdata Set emp_name='$name',emp_gender='$gender',emp_email='$email',emp_department='$department',emp_address='$address' Where id='$id'";
-    $data=$conn->query($sql);
-
-    if($data){
-        //echo "Updated the Record";
-    }else{
-        echo "Failed to update the record";
-    }
-}
-
-?>
 
     <div class="container">
         <form action="#" method="post">
@@ -93,47 +30,42 @@ if(isset($_POST['update'])){
             <input type="text" class="textfield" placeholder="Search ID" name="search" value="<?php if(isset($_POST['searchdata']) && isset($result['id']) ){
                 echo $result['id'];
             }?>">
-            <input type="text" class="textfield" placeholder="Employee Name" name="name" value="<?php if( isset($_POST['searchdata'])  && isset($result['emp_name']) ){
+            <input type="text" class="textfield" placeholder="Employee Name" name="name" value="<?php if( isset($_POST['searchdata']) && isset($result['emp_name']) ){
                 echo $result['emp_name'];
             }?>">
             <select name="gender" class="textfield">
                 <option value="Not selected">Select Gender</option>
-                <option value="Male" <?php if(isset($_POST['searchdata'])   && isset($result['emp_gender']) && $result['emp_gender'] =='Male'){
+                <option value="Male" <?php if(isset($_POST['searchdata']) && isset($result['emp_gender']) && $result['emp_gender'] =='Male'){
                     echo "selected";
                 }?>>Male </option>
-                <option value="Female" <?php if( isset($_POST['searchdata'])  && isset($result['emp_gender']) && $result['emp_gender'] =='Female'){
+                <option value="Female" <?php if( isset($_POST['searchdata']) && isset($result['emp_gender']) && $result['emp_gender'] =='Female'){
                     echo "selected";
                 }?>>Female</option>
-                <option value="Other" <?php if( isset($_POST['searchdata'])  && isset($result['emp_gender']) && $result['emp_gender'] =='Other'){
+                <option value="Other" <?php if( isset($_POST['searchdata']) && isset($result['emp_gender']) && $result['emp_gender'] =='Other'){
                     echo "selected";
                 }?>>Other</option>
             </select>
-            <input type="text" class="textfield" placeholder="Email Address" name="email" value="<?php if(isset($_POST['searchdata'])   && isset($result['emp_email'])  ){
+            <input type="text" class="textfield" placeholder="Email Address" name="email" value="<?php if(isset($_POST['searchdata']) && isset($result['emp_email'])  ){
                 echo $result['emp_email'];
             }?>">
             <select name="department" class="textfield" >
-    
-    
-    
-    
-    
-            <option value="Not Selected">Select Department</option>
-                <option value="IT" <?php if( isset($_POST['searchdata'])   && isset($result['emp_department']) &&   $result['emp_department'] == 'IT'){
+              <option value="Not Selected">Select Department</option>
+                <option value="IT" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) &&   $result['emp_department'] == 'IT'){
                     echo "selected";
                 }?>>IT </option>
-                <option value="Sales" <?php if( isset($_POST['searchdata'])   && isset($result['emp_department']) && $result['emp_department'] == 'Sales'){
+                <option value="Sales" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department'] == 'Sales'){
                     echo "selected";
                 }?>>Sales</option>
-                <option value="Accounts" <?php if( isset($_POST['searchdata'])  && isset($result['emp_department'])  && $result['emp_department']== 'Accounts'){
+                <option value="Accounts" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'Accounts'){
                     echo "selected";
                 }?>>Accounts</option>
-                <option value="Bussiness Development" <?php if( isset($_POST['searchdata'])   && isset($result['emp_eemp_departmentmail']) && $result['emp_department']== 'Bussiness Development'){
+                <option value="Bussiness Development" <?php if( isset($_POST['searchdata']) && isset($result['emp_eemp_departmentmail']) && $result['emp_department']== 'Bussiness Development'){
                     echo "selected";
                 }?>>Business Development</option>
-                <option value="Marketing" <?php if( isset($_POST['searchdata'])   && isset($result['emp_department']) && $result['emp_department']== 'Marketing'){
+                <option value="Marketing" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'Marketing'){
                     echo "selected";
                 }?>>Marketing</option>
-                <option value="HR" <?php if( isset($_POST['searchdata'])   && isset($result['emp_department']) && $result['emp_department']== 'HR'){
+                <option value="HR" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'HR'){
                     echo "selected";
                 }?>>HR</option>
             </select>
