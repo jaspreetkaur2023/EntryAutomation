@@ -18,7 +18,7 @@ body{
 .container h2{
     text-align: center;
     padding-bottom: 20px;
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid rgb(119, 111, 111);
 }
 .form{
     padding-bottom:20px ;
