@@ -7,8 +7,8 @@ if(isset($_POST['searchdata'])){
     $sql="Select * From empdata Where id= '$search_id'";
     $data=$conn->query($sql);
     $result= $data->fetch_assoc();
-    $name=$result['emp_name'];
-    echo $name;
+    //$name=$result['emp_name'];
+    //echo $name;
 }
 
 
