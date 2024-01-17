@@ -1,9 +1,5 @@
 <?php
 include_once("connection.php");
-$sql="Select * from empdata Where 1";
-$result=$conn->query();
-$row=array();
-print_r($row);
 ?>
 
 
@@ -19,11 +15,7 @@ print_r($row);
     
 </head>
 <body>
-
-
-
-
-    <div class="container">
+ <div class="container">
         <form action="#" method="post">
         <h2>Employee Data Entry Automation Software</h2>
         <div class="form">
@@ -59,7 +51,7 @@ print_r($row);
                 <option value="Accounts" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'Accounts'){
                     echo "selected";
                 }?>>Accounts</option>
-                <option value="Bussiness Development" <?php if( isset($_POST['searchdata']) && isset($result['emp_eemp_departmentmail']) && $result['emp_department']== 'Bussiness Development'){
+                <option value="Bussiness Development" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'Bussiness Development'){
                     echo "selected";
                 }?>>Business Development</option>
                 <option value="Marketing" <?php if( isset($_POST['searchdata']) && isset($result['emp_department']) && $result['emp_department']== 'Marketing'){
@@ -77,6 +69,5 @@ print_r($row);
             <input type="submit" value="Clear" name="clear" class="btn" style="background-color:blue;">
         </div>
         </form>
-    </div>
 </body>
 </html>
